@@ -1,0 +1,31 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+
+<div class="sidebar"></div>
+
+<div class="task-list"></div>
+
+<div class="task-detail">
+  <h2>Edit Task</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <input name="title" value="{{ task.1 }}"><br>
+    <textarea name="description">{{ task.2 }}</textarea><br>
+    <input type="date" name="due_date" value="{{ task.3 }}"><br>
+
+  <select name="status">
+  <option value="pending" {% if task.4 == "pending" %}selected{% endif %}>Pending</option>
+  <option value="done" {% if task.4 == "done" %}selected{% endif %}>Completed</option>
+</select>
+<br><br>
+
+    <button class="btn">Save</button>
+  </form>
+
+  <br>
+  <a href="/delete/{{ task.0 }}/" class="btn btn-danger">Delete</a>
+</div>
+
+{% endblock %}

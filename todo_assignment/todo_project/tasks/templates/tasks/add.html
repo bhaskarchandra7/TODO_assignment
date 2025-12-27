@@ -1,0 +1,28 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+
+<div class="sidebar"></div>
+
+<div class="task-list">
+    <h2>Add New Task</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Title</label>
+        <input name="title" required>
+
+        <label>Description</label>
+        <textarea name="description"></textarea>
+
+        <label>Due Date</label>
+        <input type="date" name="due_date">
+
+        <button class="btn">Create Task</button>
+    </form>
+</div>
+
+<div class="task-detail"></div>
+
+{% endblock %}

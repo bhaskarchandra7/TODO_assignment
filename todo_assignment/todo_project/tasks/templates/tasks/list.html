@@ -1,0 +1,49 @@
+{% extends "tasks/base.html" %}
+
+{% block content %}
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+    <h3>Tasks</h3>
+    <ul>
+        <li><a href="/" style="text-decoration:none;">Today</a></li>
+        <li><a href="/upcoming/" style="text-decoration:none;">Upcoming</a></li>
+        <li><a href="/completed/" style="text-decoration:none;">Completed</a></li>
+    </ul>
+
+    <hr>
+
+    <h3>Actions</h3>
+    <ul>
+        <li><a href="/add/" style="text-decoration:none;">➕ Add New Task</a></li>
+    </ul>
+</div>
+
+<!-- ================= TASK LIST ================= -->
+<div class="task-list">
+    <h2>{{ page }}</h2>
+
+    {% for t in tasks %}
+        <div class="task">
+            <a href="/task/{{ t.0 }}/" style="text-decoration:none;color:inherit;">
+                <b>{{ t.1 }}</b><br>
+
+                <small>
+                    📅 {{ t.3 }}
+                    &nbsp; | &nbsp;
+                    Status: {{ t.4 }}
+                </small>
+            </a>
+        </div>
+    {% empty %}
+        <p>No tasks found.</p>
+    {% endfor %}
+</div>
+
+<!-- ================= TASK DETAIL PLACEHOLDER ================= -->
+<div class="task-detail">
+    <h3>Task Details</h3>
+    <p>Select a task from the list to view or edit details.</p>
+</div>
+
+{% endblock %}
